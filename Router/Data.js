@@ -1,8 +1,8 @@
 const express = require('express');
 
-const data = require('../Controller/Data');
+const apidata = require('../Controller/Data');
 
-const Router = express.Router();
+const MyRouter = express.Router();
 
-Router.route('/api').get(data.control);
-module.exports = Router;
+MyRouter.route('/api').get(apidata.control);
+module.exports = MyRouter;
