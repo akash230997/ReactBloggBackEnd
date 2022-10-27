@@ -1,15 +1,26 @@
 const express = require('express');
 
-const App = express();
+const data = require('./data')
 
-const Router = require('./Router/Data');
+// const JsonData = JSON.parse(data[0].id)
+// console.log(JsonData)
+
+const App = express();
 
 const cors = require('cors');
 
+const PORT = process.env.PORT || 5000;
+
 App.use(cors());
 
-App.use('/apiuser',Router);
+App.get("/",(req,res)=>{
+    res.send('Hello From The Server!!')
+})
 
-App.listen(process.env.PORT || 9000, ()=>{
-    console.log('Connected.....');
-});
+App.get("/Data", (req, res) => {
+    res.send(data);
+})
+
+App.listen(PORT,()=>{
+    console.log('Connected....');
+})
