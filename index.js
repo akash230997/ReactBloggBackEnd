@@ -1,26 +1,23 @@
 const express = require('express');
+const app = express();
 
-const data = require('./data')
-
-// const JsonData = JSON.parse(data[0].id)
-// console.log(JsonData)
-
-const App = express();
-
+const data = require('./data');
 const cors = require('cors');
 
 const PORT = process.env.PORT || 5000;
+// const JsonData = JSON.parse(data[0].id)
+// console.log(JsonData)
 
-App.use(cors());
+app.use(cors());
 
-App.get("/",(req,res)=>{
+app.get("/",(req,res)=>{
     res.send('Hello From The Server!!')
 })
 
-App.get("/Data", (req, res) => {
+app.get("/Data", (req, res) => {
     res.send(data);
 })
 
-App.listen(PORT,()=>{
+app.listen(PORT,()=>{
     console.log('Connected....');
 })
