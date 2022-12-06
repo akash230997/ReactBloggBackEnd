@@ -8,13 +8,16 @@ const PORT = process.env.PORT || 5000;
 // const JsonData = JSON.parse(data[0].id)
 // console.log(JsonData)
 
-app.use(cors());
+const middlewareTesting = (req,res,next) =>{
+    app.use(cors());
+    next()
+}
 
-app.get("/",(req,res)=>{
+app.get("/", (req,res)=>{
     res.send('Hello From The Server!!')
 })
 
-app.get("/Data", (req, res) => {
+app.get("/Data", middlewareTesting , (req, res) => {
     res.send(data);
 })
 
